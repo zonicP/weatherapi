@@ -1,0 +1,149 @@
+  *{
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  h1 {
+    color: #7c7c7c;
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 28px;
+    margin: 0;
+  }
+  
+  ul {
+    margin: 0 0 10px;
+    padding: 0;
+  }
+  
+  li {
+    color: #7c7c7c;
+    font-size: 16px;
+    font-weight: 100;
+    height: 19px;
+    line-height: 1;
+    list-style: none;
+  }
+  
+  .weather-app {
+    border: 1px solid #dadde1;
+    padding: 15px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 600px;
+  }
+  
+  .weather-icon {
+    height: 64px;
+    width: 64px;
+    margin-right: 10px;
+  }
+  
+  .temperature {
+    color: #E7E7EB;
+    font-size: 144px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  
+  .units {
+    position: relative;
+    font-weight: 500;
+    font-size: 48px;
+    color: #A09FB1;
+  }
+  
+  .search-form {
+    margin-bottom: 20px;
+  }
+  .bg-success {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+  }
+  #place{
+    display: flex;
+    justify-content: space-between;
+  }
+.icon{
+  filter: invert(100%) sepia(1%) saturate(4224%) hue-rotate(181deg) brightness(93%) contrast(97%);
+  height: 28px;
+  margin-top: 11px;
+}
+#cool{
+  background-color: #6e777f;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  text-align: center
+}
+.float-left{
+  text-align: center;
+
+  height: 169px;
+}
+#time{
+  text-align: center;
+}
+#description{
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+  margin-top: 2rem;
+  color: #A09FB1
+}
+#date{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #88869D
+}
+#city{
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+}
+.ciudad{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+#point{
+  height: 20px;
+  filter: invert(54%) sepia(17%) saturate(342%) hue-rotate(206deg) brightness(97%) contrast(86%);
+}
+.color-b{
+  background-color: #1E213A;
+}
+.list{
+  display: flex;
+  justify-content: center;
+}
+#today{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #88869D
+}
+.nuevo{
+  text-align: right;
+  margin: .8rem 1rem 2rem auto;
+  
+}
+.nuevo-div{
+  padding: 3rem;
+}
+.col1{
+  border: 1px solid red;
+  height: 15rem;
+  background-color: #1e213a;
+  
+}
+
+.gap-5{
+  
+}
