@@ -1,5 +1,6 @@
   *{
     font-family: 'Raleway', sans-serif;
+    color: #E7E7EB;
   }
   
   h1 {
@@ -138,10 +139,20 @@
   padding: 3rem;
 }
 .col1{
-  border: 1px solid red;
+  /*border: 1px solid red;*/
   height: 15rem;
   background-color: #1e213a;
+  margin-left: 3rem;
+
   
+}
+
+.col2{
+  /*border: 1px solid red;*/
+  margin-left: 1rem;
+  height: 15rem;
+  background-color: #1e213a;
+
 }
 
 .gap-5{
