@@ -47,8 +47,16 @@ function displayWeatherCondition(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp);
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  //document.querySelector("#humiditybar").innerHTML = response.data.main.humidity;
+  //document.querySelector("#humiditybar").setAttribute("aria-valuenow") = response.data.main.humidity;
+  document.querySelector("#humiditybar").width = `${response.data.main.humidity}%`; //setAttribute("style")= `width: ${response.data.main.humidity}%`;
+  
   document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#description").innerHTML = response.data.weather[0].main;
+
+  document.querySelector("#visibility").innerHTML = response.data.visibility / 100;
+  document.querySelector("#pressure").innerHTML = response.data.main.pressure;
+
 }
 
 function searchCity(city) {
@@ -103,8 +111,8 @@ function displayForecasts(response){
     document.querySelector(`#monthPlus${i}`).innerHTML = getMonthName(response.data.list[mapRespUI.get(index=i)].dt_txt.slice(5,7));
     let cardNum = `icondayplus${i}`;
     getImage(response.data.list[mapRespUI.get(index=i)].weather[0].main, cardNum);
-    document.querySelector(`#tempMin${i}`).innerHTML = response.data.list[mapRespUI.get(index=i)].main.temp_min;
-    document.querySelector(`#tempMax${i}`).innerHTML = response.data.list[mapRespUI.get(index=i)].main.temp_max;
+    document.querySelector(`#tempMin${i}`).innerHTML = Math.round(response.data.list[mapRespUI.get(index=i)].main.temp_min /10);
+    document.querySelector(`#tempMax${i}`).innerHTML = Math.round(response.data.list[mapRespUI.get(index=i)].main.temp_max /10);
   }
 
 }
@@ -169,7 +177,10 @@ function convertToFahrenheit(event) {
   temperatureElement.innerHTML = 66;
 }
 
-
+function farenheitToCelsius(fahrenheit) 
+{
+  return (fahrenheit - 32) * (5/9); 
+} 
 
 
 function convertToCelsius(event) {
