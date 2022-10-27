@@ -74,6 +74,8 @@ function displayWeatherCondition(response) {
   document.getElementById("humiditybar").style.width=`${response.data.main.humidity}%`;
   document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#description").innerHTML = response.data.weather[0].main;
+  getBigImage(response.data.weather[0].main);
+  
 
   document.querySelector("#visibility").innerHTML = response.data.visibility / 100;
   document.querySelector("#pressure").innerHTML = response.data.main.pressure;
@@ -84,7 +86,6 @@ function displayWeatherCondition(response) {
 
 function searchLocationForecasts(response) {
   let apiKey = "a3a44d10ff3b9efe308aaf2dc7e9d22e";
-  console.log(response);
   let apiUrlForecasts = `https://api.openweathermap.org/data/2.5/forecast?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&appid=${apiKey}`;
   axios.get(apiUrlForecasts).then(displayForecasts);
 }
@@ -111,7 +112,23 @@ function displayForecasts(response){
 }
 
 
+function getBigImage(weatherDescription){
+  
+  let img = document.getElementById("bigLogo");
 
+  if(weatherDescription == "Clouds"){
+    img.src = "./HeavyCloud.png";
+  }
+  if(weatherDescription == "Rain"){
+    img.src = "./HeavyRain.png";
+  }
+  if(weatherDescription == "Clear"){
+    img.src = "./Clear.png";
+  }
+  else{
+    img.src = "./LightCloud.png";
+  }
+}
 
 
 function getImage(imageType,cardNum){
