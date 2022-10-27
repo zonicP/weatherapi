@@ -43,21 +43,18 @@ function formatDate(date) {
   return `${day} ${da} ${mes}`;
 }
 
-function displayWeatherCondition(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp);
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  //document.querySelector("#humiditybar").innerHTML = response.data.main.humidity;
-  //document.querySelector("#humiditybar").setAttribute("aria-valuenow") = response.data.main.humidity;
-  document.querySelector("#humiditybar").width = `${response.data.main.humidity}%`; //setAttribute("style")= `width: ${response.data.main.humidity}%`;
-  
-  document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
-  document.querySelector("#description").innerHTML = response.data.weather[0].main;
 
-  document.querySelector("#visibility").innerHTML = response.data.visibility / 100;
-  document.querySelector("#pressure").innerHTML = response.data.main.pressure;
-
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchMyLocation);
 }
+
+function searchMyLocation(position) {
+  let apiKey = "a3a44d10ff3b9efe308aaf2dc7e9d22e";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherCondition);
+}
+
 
 function searchCity(city) {
   let apiKey = "a3a44d10ff3b9efe308aaf2dc7e9d22e";
@@ -68,37 +65,33 @@ function searchCity(city) {
 
 
 
-function handleSubmit(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city-input").value;
-  searchCity(city);
+
+function displayWeatherCondition(response) {
+  
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp);
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.getElementById("humiditybar").style.width=`${response.data.main.humidity}%`;
+  document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
+  document.querySelector("#description").innerHTML = response.data.weather[0].main;
+
+  document.querySelector("#visibility").innerHTML = response.data.visibility / 100;
+  document.querySelector("#pressure").innerHTML = response.data.main.pressure;
+
+  searchLocationForecasts(response);
+
 }
 
-
-
-function searchLocation(position) {
+function searchLocationForecasts(response) {
   let apiKey = "a3a44d10ff3b9efe308aaf2dc7e9d22e";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayWeatherCondition);
-}
-
-
-
-
-function searchLocationForecasts(position) {
-  let apiKey = "a3a44d10ff3b9efe308aaf2dc7e9d22e";
-  let apiUrlForecasts = `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}`;
+  console.log(response);
+  let apiUrlForecasts = `https://api.openweathermap.org/data/2.5/forecast?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&appid=${apiKey}`;
   axios.get(apiUrlForecasts).then(displayForecasts);
 }
 
 
-function getForecasts(){
-  navigator.geolocation.getCurrentPosition(searchLocationForecasts);
-}
-
-
 function displayForecasts(response){
-  let mapRespUI= new Map()
+  const mapRespUI= new Map()
   mapRespUI.set(index = 1, responsePosition= 0); 
   mapRespUI.set(index= 2, responsePosition=8); 
   mapRespUI.set(index=3, responsePosition= 16); 
@@ -118,8 +111,14 @@ function displayForecasts(response){
 }
 
 
+
+
+
 function getImage(imageType,cardNum){
-  var img = document.createElement("img");
+  
+  let img = document.createElement("img");
+  img.setAttribute("id", `imgWeather${cardNum}`);
+
   if(imageType == "Clouds"){
     img.src = "./HeavyCloud.png";
   }
@@ -134,7 +133,13 @@ function getImage(imageType,cardNum){
   }
   img.width=80;
   img.height=80;
-  var src = document.getElementById(cardNum);
+  let src = document.getElementById(cardNum);
+  
+
+  if(src.childElementCount > 0){
+    let oldImage = document.getElementById(`imgWeather${cardNum}`);
+    oldImage.remove();
+  }
   src.appendChild(img);
 }
 
@@ -156,49 +161,31 @@ function getMonthName(i){
   return months[i-1];
 }
 
+
 function getWeekDay(dateValue){
-  var mydate = `${dateValue}T00:00:00`;
+  let mydate = `${dateValue}T00:00:00`;
   return moment(mydate).format('ddd');
 
 }
 
 
-function getCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchLocation);
-}
-
-
-
-
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 66;
-}
-
-function farenheitToCelsius(fahrenheit) 
-{
+function convertFarenheitToCelsius(fahrenheit) {
   return (fahrenheit - 32) * (5/9); 
 } 
 
 
-function convertToCelsius(event) {
+function handleSubmit(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 19;
+  let city = document.querySelector("#city-input").value;
+  searchCity(city);
 }
-
-
 
 
 let dateElement = document.querySelector("#date");
 let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime); 
 
-
 let searchForm = document.querySelector("#search-form");
-
 
 searchForm.addEventListener("submit", handleSubmit);
 
@@ -206,6 +193,5 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("London");
-getForecasts();
 
 
