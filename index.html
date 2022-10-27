@@ -55,7 +55,8 @@
         <input
           type="submit"
           value="Search"
-          class="form-control btn btn-primary shadow-sm w-100"/>
+          class="form-control btn btn-primary shadow-sm w-100"
+          data-bs-dismiss="offcanvas"/>
       </div>
     </div>
   </form>
@@ -102,13 +103,13 @@
             </div>
 
           </div>
-          <div class="container-fluid col-xl-9 bg-secondary">
+          <div class="container-fluid col-xl-9" id="back">
           <div class="nuevo-div">
               <table class="table table-dark table-striped">
                 <div class="row">
 
                   <div class="col col2"> <!--Card-->
-                    <div class="text-center mb-3">
+                    <div class="text-center mb-3 mt-4">
                       <span id="weekDayPlus1"></span>
                       <span id="numDayPlus1"></span>
                       <span id="monthPlus1"></span>
@@ -118,12 +119,13 @@
                     </div>
                     <div class="text-center mt-5">
                       <span id="tempMin1"></span><span>°C</span>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                       <span id="tempMax1"></span><span>°C</span>
                     </div>
                   </div>
 
                   <div class="col col2"> <!--Card-->
-                    <div class="text-center  mb-3">
+                    <div class="text-center mb-3 mt-4">
                       <span id="weekDayPlus2"></span>
                       <span id="numDayPlus2"></span>
                       <span id="monthPlus2"></span>
@@ -133,13 +135,14 @@
                     </div>
                     <div class="text-center mt-5">
                       <span id="tempMin2"></span><span>°C</span>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                       <span id="tempMax2"></span><span>°C</span>
                     </div>
                   </div>
 
 
                   <div class="col col2"> <!--Card-->
-                    <div class="text-center  mb-3">
+                    <div class="text-center mb-3 mt-4">
                       <span id="weekDayPlus3"></span>
                       <span id="numDayPlus3"></span>
                       <span id="monthPlus3"></span>
@@ -149,13 +152,14 @@
                     </div>
                     <div class="text-center mt-5">
                       <span id="tempMin3"></span><span>°C</span>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                       <span id="tempMax3"></span><span>°C</span>
                     </div>
                   </div>
 
 
                   <div class="col col2"> <!--Card-->
-                    <div class="text-center  mb-3">
+                    <div class="text-center mb-3 mt-4">
                       <span id="weekDayPlus4"></span>
                       <span id="numDayPlus4"></span>
                       <span id="monthPlus4"></span>
@@ -165,13 +169,14 @@
                     </div>
                     <div class="text-center mt-5">
                       <span id="tempMin4"></span><span>°C</span>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                       <span id="tempMax4"></span><span>°C</span>
                     </div>
                   </div>
 
 
                   <div class="col col2"> <!--Card-->
-                    <div class="text-center  mb-3">
+                    <div class="text-center mb-3 mt-4">
                       <span id="weekDayPlus5"></span>
                       <span id="numDayPlus5"></span>
                       <span id="monthPlus5"></span>
@@ -181,6 +186,7 @@
                     </div>
                     <div class="text-center mt-5">
                       <span id="tempMin5"></span><span>°C</span>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                       <span id="tempMax5"></span><span>°C</span>
                     </div>
                   </div>
@@ -193,13 +199,13 @@
                   <div class="col col1">
                     <div class="text-center">Wind status</div>
                     <div class="text-center">
-                      <span id="wind"></span><span> mph</span>
+                      <span id="wind" class="letter"></span><span> mph</span>
                     </div>
                   </div>
                   <div class="col col1 ">
                     <div class="text-center">Humidity</div>
                     <div class="text-center">
-                      <span id="humidity"></span><span> %</span>
+                      <span id="humidity" class="letter"></span><span> %</span>
                       <div class="progress mt-4">
                         <div id="humiditybar" class="progress-bar bg-warning" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
@@ -211,13 +217,13 @@
                   <div class="col col1">
                     <div class="text-center">Visibility</div>
                     <div class="text-center">
-                      <span id="visibility"></span><span> miles</span>
+                      <span id="visibility" class="letter"></span><span> miles</span>
                     </div>
                   </div>
                   <div class="col col1">
                     <div class="text-center">Air Pressure</div>
                     <div class="text-center">
-                      <span id="pressure"></span><span> mb</span>
+                      <span id="pressure" class="letter"></span><span> mb</span>
                     </div>
                   </div>
                 </div>

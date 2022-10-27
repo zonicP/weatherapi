@@ -56,6 +56,27 @@
   .search-form {
     margin-bottom: 20px;
   }
+  #offcanvasScrolling{
+    background-color: #1E213A;
+  }
+  #back{
+    background-color: #100E1D;
+  }
+  .col12{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7EB;
+  }
+.letter{
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 75px;
+  text-align: center;
+  color: #E7E7EB;
+}
+
   .bg-success {
     --bs-bg-opacity: 1;
     background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
@@ -153,8 +174,4 @@
   height: 15rem;
   background-color: #1e213a;
 
-}
-
-.gap-5{
-  
 }
