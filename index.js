@@ -75,6 +75,7 @@ function displayWeatherCondition(response) {
   document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#description").innerHTML = response.data.weather[0].main;
   getBigImage(response.data.weather[0].main);
+  console.log(response)
   
 
   document.querySelector("#visibility").innerHTML = response.data.visibility / 100;
@@ -119,15 +120,23 @@ function getBigImage(weatherDescription){
   if(weatherDescription == "Clouds"){
     img.src = "./HeavyCloud.png";
   }
-  if(weatherDescription == "Rain"){
-    img.src = "./HeavyRain.png";
-  }
-  if(weatherDescription == "Clear"){
+  else if(weatherDescription == "Clear"){
     img.src = "./Clear.png";
+  }
+  else if(weatherDescription == "Snow"){
+    img.src = "./Snow.png";
+  }
+  else if(weatherDescription == "Thunderstorm"){
+    img.src = "./Thunderstorm.png";
+  }
+  else if(weatherDescription == "Rain"){
+    img.src = "./HeavyRain.png";
   }
   else{
     img.src = "./LightCloud.png";
   }
+  img.width=150;
+  img.height=150;
 }
 
 
@@ -139,17 +148,23 @@ function getImage(imageType,cardNum){
   if(imageType == "Clouds"){
     img.src = "./HeavyCloud.png";
   }
-  if(imageType == "Rain"){
-    img.src = "./HeavyRain.png";
-  }
-  if(imageType == "Clear"){
+  else if(imageType == "Clear"){
     img.src = "./Clear.png";
+  }
+  else if(imageType == "Snow"){
+    img.src = "./Snow.png";
+  }
+  else if(imageType == "Thunderstorm"){
+    img.src = "./Thunderstorm.png";
+  }
+  else if(imageType == "Rain"){
+    img.src = "./HeavyRain.png";
   }
   else{
     img.src = "./LightCloud.png";
   }
-  img.width=80;
-  img.height=80;
+  img.width=50;
+  img.height=50;
   let src = document.getElementById(cardNum);
   
 
@@ -196,6 +211,7 @@ function handleSubmit(event) {
   let city = document.querySelector("#city-input").value;
   searchCity(city);
 }
+
 
 
 let dateElement = document.querySelector("#date");
